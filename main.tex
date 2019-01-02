@@ -1,0 +1,148 @@
+% -*- coding: utf-8 -*-
+%%
+%%
+%%
+%%
+%%
+%%
+%%  本模板可以使用以下两种方式编译:
+%%
+%%     1. PDFLaTeX
+%%
+%%     2. XeLaTeX [推荐]
+%%
+%%  注意：
+%%    1. 在改变编译方式前应先删除 *.toc 和 *.aux 文件，
+%%       因为不同编译方式产生的辅助文件格式可能并不相同。
+%%
+%%
+\documentclass[12pt,openany]{book}
+          
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage[bookmarksnumbered]{hyperref}
+\else
+  \usepackage[unicode,bookmarksnumbered]{hyperref}
+\fi
+
+%\usepackage[emptydoublepage]{NKThesis}   % 中文
+\usepackage[emptydoublepage,English]{NKThesis} % 英文
+
+%   根据需要选择 biblatex 宏包选项.
+\usepackage[backend = bibtex8, defernumbers = true,  sorting=none,  style = nkthesis]{biblatex}
+\hypersetup{colorlinks=true,
+            pdfborder=0 0 1,
+            citecolor=black,
+            linkcolor=black}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{arydshln}
+%\usepackage{cchead}
+\usepackage{enumitem}
+
+\usepackage{bm}
+%\usepackage{mathpazo}
+\usetikzlibrary{arrows}
+\usepackage{flowchart}
+\usetikzlibrary{shapes.geometric}
+\usepackage{listings}
+\usepackage{xcolor}
+%\usepackage{showkeys} %显示出\ref里的label代号，记得注释掉
+
+\newcommand*{\QEDB}{\hfill\ensuremath{\square}}
+
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+\newcommand{\wuhao}{\fontsize{10.5pt}{16pt}\selectfont}
+
+\addbibresource{nkthesis.bib}
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+
+\includeonly{
+./tex/abstract,
+./tex/ch1,
+./tex/ch2,
+./tex/ch3,
+./tex/ch4,
+./tex/ch5,
+./tex/ch6,
+./tex/ch7,
+./tex/references,
+./tex/acknowledgements,
+%./tex/appendix,
+./tex/resume
+}
+
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{Lemma}{Lemma}[chapter]
+\newtheorem{Corollary}{Corollary}[chapter]
+\newtheorem{Proposition}{Proposition}[chapter]
+\newtheorem{Definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{algo}{Algorithm}[chapter]
+%\renewcommand{arraystrech}{1.5}
+%\renewcommand\floatpagefraction{.9}
+%\renewcommand\topfraction{.9}
+%\renewcommand\bottomfraction{.9}
+%\renewcommand\textfraction{.1}
+\begin{document}
+
+%  设置基本信息
+%  注意:  逗号`,'是项目分隔符. 如果某一项的值出现逗号, 应放在花括号内, 如 {,}
+%
+\NKTsetup{%
+  论文题目(中文) = 中文标题,
+  副标题         = ,
+  论文题目(英文) = 英文标题,
+  论文作者       =  ,
+  学号           =  ,
+  指导教师       =  ,
+  申请学位       = 理学硕士,
+  培养单位       = ,
+  学科专业       =  ,
+  研究方向       =  ,
+  中图分类号     = ,
+  UDC            = ,
+  学校代码       = 10055,
+  密级           = 公开,
+                   % 公开 | 限制 | 秘密 | 机密, 若为公开, 不填以下三项
+  保密期限       = ,
+  审批表编号     = ,
+  批准日期       = ,
+  论文完成时间   = 二〇一九年五月,
+  答辩日期       = 2019/5/20,
+  论文类别       = 学历硕士,
+                   % 博士 | 学历硕士 | 硕士专业学位 | 高校教师 | 同等学力硕士
+  院/系/所       = ,
+  专业           =  ,
+  联系电话       =  ,
+  Email          = ,
+  通讯地址(邮编) = 天津市卫津路94号南开大学统计研究院(300071),
+  备注           = }
+
+
+\include{./tex/abstract}
+\tableofcontents
+\include{./tex/ch1}
+\include{./tex/ch2}
+\include{./tex/ch3}
+\include{./tex/ch4}
+\include{./tex/ch5}
+\include{./tex/ch6}
+\include{./tex/ch7}
+\include{./tex/references}
+\include{./tex/acknowledgements}
+%\include{./tex/appendix}
+\include{./tex/resume}
+
+\end{document}
